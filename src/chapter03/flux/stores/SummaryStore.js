@@ -39,7 +39,7 @@ SummaryStore.dispatchToken = AppDispatcher.register((action) => {
     if(action.type === ActionTypes.INCREMENT ||
         action.type === ActionTypes.DECREMENT) {
         AppDispatcher.waitFor([CounterStore.dispatchToken]);
-        CounterStore.emitChange();
+        SummaryStore.emitChange();
     }
 });
 
