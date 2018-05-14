@@ -35,4 +35,6 @@ CounterStore.dispatchToken = AppDispatcher.register((action) => {
         counterValues[action.counterCaption] --;
         CounterStore.emitChange();
     }
-})
+});
+
+export default CounterStore;

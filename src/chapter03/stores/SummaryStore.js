@@ -8,7 +8,7 @@ import AppDispatcher from '../AppDispatcher';
 
 const CHANGE_EVENT = 'changed';
 
-function computeSummary() {
+function computeSummary(counterValues) {
     let summary = 0;
     for(const key in counterValues) {
         if(counterValues.hasOwnProperty(key)) {
@@ -38,7 +38,9 @@ const SummaryStore = Object.assign({}, EventEmitter.prototype, {
 SummaryStore.dispatchToken = AppDispatcher.register((action) => {
     if(action.type === ActionTypes.INCREMENT ||
         action.type === ActionTypes.DECREMENT) {
-        AppDispater.waitFor([CounterStore.dispatchToken]);
+        AppDispatcher.waitFor([CounterStore.dispatchToken]);
         CounterStore.emitChange();
     }
-})
+});
+
+export default SummaryStore;
